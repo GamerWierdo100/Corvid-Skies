@@ -4,7 +4,6 @@
   "package": "FileDev.corvid.client.mixin",
   "compatibilityLevel": "JAVA_21",
   "mixins": [
-    "PlayerDisplayNameMixin"
   ],
   "client": [
 
