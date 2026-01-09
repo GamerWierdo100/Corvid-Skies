@@ -1,16 +1,20 @@
 package FileDev.corvid.client;
-import net.minecraft.client.render.entity.PlayerEntityRenderer;
+
 import net.fabricmc.api.ClientModInitializer;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.text.Text;
-import org.spongepowered.asm.mixin.Mixin;
-import org.spongepowered.asm.mixin.injection.At;
-import org.spongepowered.asm.mixin.injection.Inject;
-import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
+import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
+import FileDev.corvid.client.FlightKeybinds;
+import FileDev.corvid.called.FlightNetwork;
 
 public class CorvidClient implements ClientModInitializer {
 
     @Override
     public void onInitializeClient() {
+        FlightKeybinds.register();
+
+        ClientTickEvents.END_CLIENT_TICK.register(client -> {
+            while (FlightKeybinds.TOGGLE_FLIGHT.wasPressed()) {
+                FlightNetwork.sendTogglePacket(); // client-only
+            }
+        });
     }
 }

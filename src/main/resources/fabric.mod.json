@@ -17,11 +17,9 @@
       "FileDev.corvid.client.CorvidClient"
     ],
     "main": [
-      "FileDev.corvid.Corvid"
     ]
   },
   "mixins": [
-    "corvid.mixins.json"
   ],
   "depends": {
     "fabricloader": ">=${loader_version}",
